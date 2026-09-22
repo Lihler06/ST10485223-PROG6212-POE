@@ -1,0 +1,21 @@
+name: Part 1 Documentation Validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required Part 1 files
+        run: |
+          test -f docs/ERD.png
+          test -f docs/API-Endpoint-Plan.docx
+          test -f docs/RaceDay-Database.sql
+          test -f README.md
+          echo "All required Part 1 files are present."
